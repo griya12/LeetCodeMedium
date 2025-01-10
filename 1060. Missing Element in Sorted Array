@@ -1,0 +1,15 @@
+class Solution:
+    def missingElement(self, nums: List[int], k: int) -> int:
+        pivot = 0
+
+        while pivot < len(nums)-1 and k > 0:
+            currNum = nums[pivot]
+            nextNum = nums[pivot + 1]
+            currNum += 1
+            while currNum != nextNum:
+                k -= 1
+                if k == 0:
+                    return currNum
+                currNum += 1
+            pivot += 1
+        return nums[-1] + k
